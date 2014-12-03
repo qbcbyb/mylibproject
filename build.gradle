@@ -1,0 +1,20 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        mavenLocal();
+        maven { url "http://localhost:8081/nexus/content/groups/public/" };
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0-rc1'
+
+    }
+}
+
+allprojects {
+    apply plugin: 'maven'
+    repositories {
+        mavenLocal();
+        maven { url "http://localhost:8081/nexus/content/groups/public/" };
+    }
+}

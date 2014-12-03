@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+group = 'com.eric.library.commonutils'
+version = '0.0.2-SNAPSHOT'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://localhost:8081/nexus/content/repositories/releases") {
+                authentication(userName: "admin", password: "admin123")
+            }
+            snapshotRepository(url: "http://localhost:8081/nexus/content/repositories/snapshots/") {
+                authentication(userName: "admin", password: "admin123")
+            }
+            pom {
+                artifactId = project.name
+                project {
+                    name project.name
+                    description project.name
+                    url ''
+
+                    scm {
+                        url ''
+                        connection ''
+                        developerConnection ''
+                    }
+
+                    licenses {
+                        license {
+                            name 'Apache License, Version 2.0'
+                            url 'http://www.apache.org/licenses/LICENSE-2.0'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'eric'
+                            name 'Eric'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
