@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/MPChartLib" />
             <option value="$PROJECT_DIR$/PullToRefresh" />
+            <option value="$PROJECT_DIR$/androidcommon" />
             <option value="$PROJECT_DIR$/commonutils" />
             <option value="$PROJECT_DIR$/ericlibrary" />
           </set>

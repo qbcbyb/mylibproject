@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/PullToRefresh/PullToRefresh.iml" filepath="$PROJECT_DIR$/PullToRefresh/PullToRefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidcommon/androidcommon.iml" filepath="$PROJECT_DIR$/androidcommon/androidcommon.iml" />
       <module fileurl="file://$PROJECT_DIR$/commonutils/commonutils.iml" filepath="$PROJECT_DIR$/commonutils/commonutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/ericlibrary/ericlibrary.iml" filepath="$PROJECT_DIR$/ericlibrary/ericlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibproject.iml" filepath="$PROJECT_DIR$/mylibproject.iml" />
