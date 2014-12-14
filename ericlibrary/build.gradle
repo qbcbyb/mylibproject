@@ -30,7 +30,7 @@ dependencies {
 }
 
 group = 'com.eric.library.ericlibrary'
-version = '0.0.3-SNAPSHOT'
+version = '0.0.4-SNAPSHOT'
 uploadArchives {
     repositories {
         mavenDeployer {

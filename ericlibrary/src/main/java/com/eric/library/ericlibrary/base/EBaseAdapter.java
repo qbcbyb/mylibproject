@@ -119,8 +119,13 @@ public class EBaseAdapter extends BaseAdapter {
         for (int i = 0; i < count; i++) {
             final View v = view.findViewById(to[i]);
             if (v != null) {
-                final Object data = dataModel.getValue(from[i]);
+                String[] properties = from[i].split(".");
+                Object data = null;
+                for(int j = 0;j<properties.length;j++){
+                    data = dataModel.getValue(properties[j]);
+                }
                 String text = data == null ? "" : data.toString();
+
                 if (text == null) {
                     text = "";
                 }
