@@ -106,7 +106,7 @@ public class EBaseAdapter extends BaseAdapter {
     }
 
     private void bindView(int position, View view) {
-        final EBaseModel dataModel = mData.get(position);
+        EBaseModel dataModel = mData.get(position);
         if (dataModel == null) {
             return;
         }
@@ -121,8 +121,15 @@ public class EBaseAdapter extends BaseAdapter {
             if (v != null) {
                 String[] properties = from[i].split(".");
                 Object data = null;
-                for(int j = 0;j<properties.length;j++){
-                    data = dataModel.getValue(properties[j]);
+                if (properties != null && properties.length > 0) {
+                    for (int j = 0; j < properties.length; j++) {
+                        data = dataModel.getValue(properties[j]);
+                        if (data instanceof EBaseModel) {
+                            dataModel = (EBaseModel) data;
+                        }
+                    }
+                } else {
+                    data = dataModel.getValue(from[i]);
                 }
                 String text = data == null ? "" : data.toString();
 
