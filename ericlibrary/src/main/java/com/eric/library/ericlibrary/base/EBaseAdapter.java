@@ -2,6 +2,7 @@ package com.eric.library.ericlibrary.base;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,18 +120,22 @@ public class EBaseAdapter extends BaseAdapter {
         for (int i = 0; i < count; i++) {
             final View v = view.findViewById(to[i]);
             if (v != null) {
-                String[] properties = from[i].split(".");
+                String[] properties = from[i].split("\\.");
                 Object data = null;
-                if (properties != null && properties.length > 0) {
-                    for (int j = 0; j < properties.length; j++) {
-                        data = dataModel.getValue(properties[j]);
+                if (properties.length > 1) {//如果大于1说明肯定是个子对象
+                    EBaseModel childModel = (EBaseModel) dataModel.getValue(properties[0]);
+                    for (int j = 1; j < properties.length; j++) {
+                        data = childModel.getValue(properties[j]);
                         if (data instanceof EBaseModel) {
-                            dataModel = (EBaseModel) data;
+                            childModel = (EBaseModel) data;
+                        } else {
+                            break;
                         }
                     }
                 } else {
                     data = dataModel.getValue(from[i]);
                 }
+                Log.d("EBaseAdapter", "data is " + data);
                 String text = data == null ? "" : data.toString();
 
                 if (text == null) {

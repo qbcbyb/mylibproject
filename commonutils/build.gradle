@@ -5,7 +5,7 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        minSdkVersion 11
+        minSdkVersion 10
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -23,7 +23,7 @@ dependencies {
 }
 
 group = 'com.eric.library.commonutils'
-version = '0.0.2-SNAPSHOT'
+version = '0.0.3-SNAPSHOT'
 uploadArchives {
     repositories {
         mavenDeployer {
