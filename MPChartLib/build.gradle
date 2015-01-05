@@ -33,7 +33,7 @@ android {
 dependencies {
     //compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:19.+'
-    compile 'com.nineoldandroids:library:2.4.+'
+    compile 'com.nineoldandroids:nineoldanimatin:1.0'
 }
 group = 'com.eric.library.charting'
 version = '0.0.1-SNAPSHOT'

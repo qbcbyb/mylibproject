@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/androidcommon" />
             <option value="$PROJECT_DIR$/commonutils" />
             <option value="$PROJECT_DIR$/ericlibrary" />
+            <option value="$PROJECT_DIR$/swipelistview" />
           </set>
         </option>
       </GradleProjectSettings>

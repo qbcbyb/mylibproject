@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/commonutils/commonutils.iml" filepath="$PROJECT_DIR$/commonutils/commonutils.iml" />
       <module fileurl="file://$PROJECT_DIR$/ericlibrary/ericlibrary.iml" filepath="$PROJECT_DIR$/ericlibrary/ericlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/mylibproject.iml" filepath="$PROJECT_DIR$/mylibproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swipelistview/swipelistview.iml" filepath="$PROJECT_DIR$/swipelistview/swipelistview.iml" />
     </modules>
   </component>
 </project>
