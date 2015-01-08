@@ -1,4 +1,3 @@
-
 package com.github.mikephil.charting.listener;
 
 import android.annotation.SuppressLint;
@@ -21,22 +20,30 @@ import com.github.mikephil.charting.utils.Highlight;
 /**
  * TouchListener for Bar-, Line-, Scatter- and CandleStickChart with handles all
  * touch interaction. Longpress == Zoom out. Double-Tap == Zoom in.
- * 
+ *
  * @author Philipp Jahoda
  */
 public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarLineScatterCandleData<? extends BarLineScatterCandleRadarDataSet<? extends Entry>>>>
         extends SimpleOnGestureListener implements OnTouchListener {
 
-    /** the original touch-matrix from the chart */
+    /**
+     * the original touch-matrix from the chart
+     */
     private Matrix mMatrix = new Matrix();
 
-    /** matrix for saving the original matrix state */
+    /**
+     * matrix for saving the original matrix state
+     */
     private Matrix mSavedMatrix = new Matrix();
 
-    /** point where the touch action started */
+    /**
+     * point where the touch action started
+     */
     private PointF mTouchStartPoint = new PointF();
 
-    /** center between two pointers (fingers on the display) */
+    /**
+     * center between two pointers (fingers on the display)
+     */
     private PointF mTouchPointCenter = new PointF();
 
     // states
@@ -48,20 +55,28 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
     private static final int PINCH_ZOOM = 4;
     private static final int POST_ZOOM = 5;
 
-    /** integer field that holds the current touch-state */
+    /**
+     * integer field that holds the current touch-state
+     */
     private int mTouchMode = NONE;
 
     private float mSavedXDist = 1f;
     private float mSavedYDist = 1f;
     private float mSavedDist = 1f;
 
-    /** the last highlighted object */
+    /**
+     * the last highlighted object
+     */
     private Highlight mLastHighlighted;
 
-    /** the chart the listener represents */
+    /**
+     * the chart the listener represents
+     */
     private T mChart;
 
-    /** the gesturedetector used for detecting taps and longpresses, ... */
+    /**
+     * the gesturedetector used for detecting taps and longpresses, ...
+     */
     private GestureDetector mGestureDetector;
 
     public BarLineChartTouchListener(T chart, Matrix start) {
@@ -74,7 +89,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-
+        this.mChart.getParent().requestDisallowInterceptTouchEvent(true);
         if (mTouchMode == NONE) {
             mGestureDetector.onTouchEvent(event);
         }
@@ -140,7 +155,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
                 } else if (mTouchMode == NONE
                         && Math.abs(distance(event.getX(), mTouchStartPoint.x, event.getY(),
-                                mTouchStartPoint.y)) > 25f) {
+                        mTouchStartPoint.y)) > 25f) {
 
                     if (mChart.hasNoDragOffset()) {
 
@@ -175,7 +190,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * Saves the current Matrix state and the touch-start point.
-     * 
+     *
      * @param event
      */
     private void saveTouchStart(MotionEvent event) {
@@ -186,7 +201,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * Performs all necessary operations needed for dragging.
-     * 
+     *
      * @param event
      */
     private void performDrag(MotionEvent event) {
@@ -206,7 +221,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * Performs the all operations necessary for pinch and axis zoom.
-     * 
+     *
      * @param event
      */
     private void performZoom(MotionEvent event) {
@@ -227,7 +242,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
                 if (mTouchMode == PINCH_ZOOM) {
 
                     float scale = totalDist / mSavedDist; // total
-                                                          // scale
+                    // scale
 
                     mMatrix.set(mSavedMatrix);
                     mMatrix.postScale(scale, scale, t.x, t.y);
@@ -236,7 +251,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
                     float xDist = getXDist(event);
                     float scaleX = xDist / mSavedXDist; // x-axis
-                                                        // scale
+                    // scale
 
                     mMatrix.set(mSavedMatrix);
                     mMatrix.postScale(scaleX, 1f, t.x, t.y);
@@ -245,7 +260,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
                     float yDist = getYDist(event);
                     float scaleY = yDist / mSavedYDist; // y-axis
-                                                        // scale
+                    // scale
 
                     mMatrix.set(mSavedMatrix);
 
@@ -264,7 +279,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * returns the distance between two points
-     * 
+     *
      * @param eventX
      * @param startX
      * @param eventY
@@ -279,7 +294,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * Determines the center point between two pointer touch points.
-     * 
+     *
      * @param point
      * @param event
      */
@@ -291,7 +306,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * returns the distance between two pointer touch points
-     * 
+     *
      * @param event
      * @return
      */
@@ -304,7 +319,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
     /**
      * calculates the distance on the x-axis between two pointers (fingers on
      * the display)
-     * 
+     *
      * @param e
      * @return
      */
@@ -316,7 +331,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
     /**
      * calculates the distance on the y-axis between two pointers (fingers on
      * the display)
-     * 
+     *
      * @param e
      * @return
      */
@@ -328,7 +343,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
     /**
      * returns the correct translation depending on the provided x and y touch
      * points
-     * 
+     *
      * @param e
      * @return
      */
@@ -354,7 +369,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * returns the matrix object the listener holds
-     * 
+     *
      * @return
      */
     public Matrix getMatrix() {
@@ -363,7 +378,7 @@ public class BarLineChartTouchListener<T extends BarLineChartBase<? extends BarL
 
     /**
      * returns the touch mode the listener is currently in
-     * 
+     *
      * @return
      */
     public int getTouchMode() {
